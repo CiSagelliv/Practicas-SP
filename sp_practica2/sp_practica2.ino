@@ -14,6 +14,7 @@ int luz;
 int valor;
 
 void setup() {
+  Serial.begin(9600);
   pinMode(LED, OUTPUT);
 }
 
@@ -21,4 +22,9 @@ void loop() {
   luz = analogRead(FOTO);
   valor = round(luz * FACTOR);
   analogWrite(LED, valor);
+  Serial.print("Sombra: ");
+  Serial.println(luz);
+  Serial.print("Valor: ");
+  Serial.println(valor);
+  delay(500);
 }
