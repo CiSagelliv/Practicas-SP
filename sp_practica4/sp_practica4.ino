@@ -21,7 +21,7 @@ void loop() {
   delay(1000); 
   color(171,0,255); // "Morado"
   delay(1000);
-  color(236,255,0); // "Cyan"
+  color(236,255,0); // "Amarillo"
   delay(1000);
 }
 
