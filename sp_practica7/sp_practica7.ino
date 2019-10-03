@@ -12,6 +12,8 @@
 
 bool paso = false;
 
+bool semaforo_0 = true;
+
 void setup() {
   pinMode(ROJO_1, OUTPUT);
   pinMode(AMARILLO_1, OUTPUT);
@@ -28,19 +30,47 @@ void loop() {
   if (paso) {
     rojo_1();
     rojo_2();
-    delay(2000);
+    delay(3000);
     paso = false;
   } else {
-    rojo_1();
-    verde_2();
-    delay(2000);
-    amarillo_2();
-    delay(1000);
-    verde_1();
-    rojo_2();
-    delay(2000);
-    amarillo_1();
-    delay(1000);
+    if (semaforo_0) {
+      rojo_1();
+      verde_2();
+      delay(2000);
+      digitalWrite(VERDE_2, LOW);
+      delay(300);
+      digitalWrite(VERDE_2, HIGH);
+      delay(300);
+      digitalWrite(VERDE_2, LOW);
+      delay(300);
+      digitalWrite(VERDE_2, HIGH);
+      delay(300);
+      digitalWrite(VERDE_2, LOW);
+      delay(300);
+      digitalWrite(VERDE_2, HIGH);
+      delay(300);
+      amarillo_2();
+      delay(2000);
+    } else {
+      verde_1();
+      rojo_2();
+      delay(2000);
+      digitalWrite(VERDE_1, LOW);
+      delay(300);
+      digitalWrite(VERDE_1, HIGH);
+      delay(300);
+      digitalWrite(VERDE_1, LOW);
+      delay(300);
+      digitalWrite(VERDE_1, HIGH);
+      delay(300);
+      digitalWrite(VERDE_1, LOW);
+      delay(300);
+      digitalWrite(VERDE_1, HIGH);
+      delay(300);
+      amarillo_1();
+      delay(2000);
+    }
+    semaforo_0 = !semaforo_0;
   }
 }
 
